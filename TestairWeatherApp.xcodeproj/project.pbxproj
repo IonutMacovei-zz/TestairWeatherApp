@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -87,7 +87,6 @@
 				D8C8851CDF35500FD24DCCCC /* Pods-TestairWeatherApp.debug.xcconfig */,
 				540BA28D2573F01E5BC13360 /* Pods-TestairWeatherApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,6 +127,8 @@
 				CDC0A2AF232A82AC0067F586 /* Presenters */,
 				CDC0A2AE232A82A30067F586 /* Models */,
 				CDC0A2AC232A82890067F586 /* DataSource */,
+				CDC0A2B1232A8A8A0067F586 /* Utils */,
+				CDC0A2B4232A8E120067F586 /* Extensions */,
 				CD408B42232A73DD00B48B95 /* AppDelegate.swift */,
 				CD408B46232A73DD00B48B95 /* Main.storyboard */,
 				CD408B4C232A73DF00B48B95 /* Assets.xcassets */,
@@ -183,6 +184,20 @@
 				CD408B44232A73DD00B48B95 /* ViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CDC0A2B1232A8A8A0067F586 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CDC0A2B4232A8E120067F586 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
