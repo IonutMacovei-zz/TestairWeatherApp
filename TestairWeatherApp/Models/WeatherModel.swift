@@ -11,6 +11,7 @@ struct WeatherModel {
     let main: Main!
     let dt: Int!
     let name: String!
+    let icon: String
     
     var temperature: Int {
         return Int(main.temp - 273.15)

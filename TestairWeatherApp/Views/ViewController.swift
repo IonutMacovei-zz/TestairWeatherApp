@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import ChameleonFramework
-
-let colors: [UIColor] = [UIColor.flatGreenDark,
-                         UIColor.flatLime]
 
 class ViewController: UIViewController {
     @IBOutlet var textField: UITextField!
@@ -30,18 +26,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let _ = view.backgroundColor?.applyGradient(for: view)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         textField.rightView = btnDropDown
         textField.rightViewMode = .always
         presenter = WeatherPresenter()
-        
-        view.backgroundColor = GradientColor(.topToBottom, frame: view.frame, colors: colors)
-
     }
     
     @objc func requestWeather() {
         guard let text = textField.text else { return }
         presenter.loadWeatherFor(city: text)
+        performSegue(withIdentifier: "showTableVC", sender: self)
     }
 
 }

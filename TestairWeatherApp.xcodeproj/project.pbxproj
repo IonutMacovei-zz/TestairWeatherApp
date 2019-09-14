@@ -16,6 +16,10 @@
 		CD408B50232A73DF00B48B95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD408B4E232A73DF00B48B95 /* LaunchScreen.storyboard */; };
 		CD408B66232A73DF00B48B95 /* TestairWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B65232A73DF00B48B95 /* TestairWeatherAppUITests.swift */; };
 		CD408B76232A753500B48B95 /* TestairWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B5A232A73DF00B48B95 /* TestairWeatherAppTests.swift */; };
+		CD6358CD232CDCE100D3B3C5 /* Gradinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358CC232CDCE100D3B3C5 /* Gradinet.swift */; };
+		CD6358CF232CE10900D3B3C5 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358CE232CE10900D3B3C5 /* WeatherTableViewController.swift */; };
+		CD6358D3232CE32F00D3B3C5 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358D1232CE32F00D3B3C5 /* WeatherTableViewCell.swift */; };
+		CD6358D4232CE32F00D3B3C5 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6358D2232CE32F00D3B3C5 /* WeatherTableViewCell.xib */; };
 		CDC0A2B8232A9A330067F586 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0A2B7232A9A330067F586 /* WeatherModel.swift */; };
 		CDC0A2BB232AAE080067F586 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0A2BA232AAE080067F586 /* WeatherPresenter.swift */; };
 		CDC0A2BD232AAED00067F586 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0A2BC232AAED00067F586 /* ApiResponse.swift */; };
@@ -56,6 +60,10 @@
 		CD408B61232A73DF00B48B95 /* TestairWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestairWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD408B65232A73DF00B48B95 /* TestairWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestairWeatherAppUITests.swift; sourceTree = "<group>"; };
 		CD408B67232A73DF00B48B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD6358CC232CDCE100D3B3C5 /* Gradinet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradinet.swift; sourceTree = "<group>"; };
+		CD6358CE232CE10900D3B3C5 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
+		CD6358D1232CE32F00D3B3C5 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		CD6358D2232CE32F00D3B3C5 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
 		CDC0A2B7232A9A330067F586 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		CDC0A2BA232AAE080067F586 /* WeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 		CDC0A2BC232AAED00067F586 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
@@ -135,7 +143,7 @@
 				CDC0A2AF232A82AC0067F586 /* Presenters */,
 				CDC0A2AE232A82A30067F586 /* Models */,
 				CDC0A2B9232AA1730067F586 /* Services */,
-				CDC0A2B4232A8E120067F586 /* Extensions */,
+				CDC0A2B4232A8E120067F586 /* Extensions+Utils */,
 				CD408B42232A73DD00B48B95 /* AppDelegate.swift */,
 				CD408B46232A73DD00B48B95 /* Main.storyboard */,
 				CD408B4C232A73DF00B48B95 /* Assets.xcassets */,
@@ -164,6 +172,15 @@
 			path = TestairWeatherAppUITests;
 			sourceTree = "<group>";
 		};
+		CD6358D0232CE30200D3B3C5 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CD6358D1232CE32F00D3B3C5 /* WeatherTableViewCell.swift */,
+				CD6358D2232CE32F00D3B3C5 /* WeatherTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		CDC0A2AE232A82A30067F586 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,17 +200,20 @@
 		CDC0A2B0232A82BE0067F586 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CD6358D0232CE30200D3B3C5 /* TableViewCells */,
 				CD408B44232A73DD00B48B95 /* ViewController.swift */,
+				CD6358CE232CE10900D3B3C5 /* WeatherTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CDC0A2B4232A8E120067F586 /* Extensions */ = {
+		CDC0A2B4232A8E120067F586 /* Extensions+Utils */ = {
 			isa = PBXGroup;
 			children = (
 				CDC0A2BE232AB4400067F586 /* UnixTime.swift */,
+				CD6358CC232CDCE100D3B3C5 /* Gradinet.swift */,
 			);
-			path = Extensions;
+			path = "Extensions+Utils";
 			sourceTree = "<group>";
 		};
 		CDC0A2B9232AA1730067F586 /* Services */ = {
@@ -310,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6358D4232CE32F00D3B3C5 /* WeatherTableViewCell.xib in Resources */,
 				CD408B50232A73DF00B48B95 /* LaunchScreen.storyboard in Resources */,
 				CD408B4D232A73DF00B48B95 /* Assets.xcassets in Resources */,
 				CD408B48232A73DD00B48B95 /* Main.storyboard in Resources */,
@@ -379,13 +400,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6358D3232CE32F00D3B3C5 /* WeatherTableViewCell.swift in Sources */,
 				CDC0A2BB232AAE080067F586 /* WeatherPresenter.swift in Sources */,
+				CD6358CF232CE10900D3B3C5 /* WeatherTableViewController.swift in Sources */,
 				CDC0A2BF232AB4400067F586 /* UnixTime.swift in Sources */,
 				CD408B4B232A73DD00B48B95 /* TestairWeatherApp.xcdatamodeld in Sources */,
 				CD408B45232A73DD00B48B95 /* ViewController.swift in Sources */,
 				CDC0A2BD232AAED00067F586 /* ApiResponse.swift in Sources */,
 				CDC0A2B8232A9A330067F586 /* WeatherModel.swift in Sources */,
 				CD408B43232A73DD00B48B95 /* AppDelegate.swift in Sources */,
+				CD6358CD232CDCE100D3B3C5 /* Gradinet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
