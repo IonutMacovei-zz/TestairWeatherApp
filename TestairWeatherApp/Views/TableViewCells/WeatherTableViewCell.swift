@@ -8,6 +8,14 @@
 
 import UIKit
 
+protocol WeatherCell: class {
+    func showWeather(description: String,
+                     temperature: Int,
+                     date: String,
+                     name: String,
+                     icon: Data)
+}
+
 class WeatherTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "WeatherTableViewCell"
@@ -40,13 +48,13 @@ class WeatherTableViewCell: UITableViewCell {
 
 }
 
-extension WeatherTableViewCell: WeatherPresenterDelegate {
-    func showWeather(description: String, temperature: Int, date: String, name: String, icon: String) {
-        descriptionLabel.text = description
+extension WeatherTableViewCell: WeatherCell {
+    func showWeather(description: String, temperature: Int, date: String, name: String, icon: Data) {
+        descriptionLabel.text = description.capitalized
         temperatureLabel.text = String(temperature)
-        cityLabel.text = name
         dateLabel.text = date
+        cityLabel.text = name
+        iconImageView.image = UIImage(data: icon)
     }
-    
-    
 }
+

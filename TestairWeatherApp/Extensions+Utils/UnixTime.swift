@@ -20,7 +20,15 @@ extension UnixTime {
     var dateFull: Date {
         return Date(timeIntervalSince1970: Double(self))
     }
-    var dayMonth: String {
-        return formatType(form: "dd:MMM").string(from: dateFull)
+    var month: String {
+        return formatType(form: "MMM").string(from: dateFull)
+    }
+    
+    var day: String {
+        return formatType(form: "dd").string(from: dateFull)
+    }
+    
+    var monthDay: String {
+        return month.uppercased() + "\n" + day
     }
 }

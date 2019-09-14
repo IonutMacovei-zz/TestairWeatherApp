@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WeatherViewController.swift
 //  TestairWeatherApp
 //
 //  Created by Macovei, Ionut on 12/09/2019.
@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol WeatherView: class {
+    func showDetails(nextPresenter: ListWeatherPresenter)
+}
+
+class WeatherViewController: UIViewController {
     @IBOutlet var textField: UITextField!
     
-    private var presenter: WeatherPresenter!
+    private var presenter = WeatherPresenter()
     
     internal var btnDropDown: UIButton {
         let size: CGFloat = 25.0
@@ -30,20 +34,20 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         textField.rightView = btnDropDown
         textField.rightViewMode = .always
-        presenter = WeatherPresenter()
-    }
-    
-    @objc func requestWeather() {
-        guard let text = textField.text else { return }
-        presenter.loadWeatherFor(city: text)
-        performSegue(withIdentifier: "showTableVC", sender: self)
+        presenter.setView(self)
     }
 
+    @objc func requestWeather() {
+        guard let text = textField.text else { return }
+        presenter.loadWeatherFor(city: text, completion: { _ in
+            self.presenter.showDetails()
+        })
+    }
 }
-//extension ViewController: WeatherPresenterProtocol {
-//    func showWeather(data: WeatherModel) {
-//        <#code#>
-//    }
-//
-//
-//}
+
+extension WeatherViewController: WeatherView {
+    func showDetails(nextPresenter: ListWeatherPresenter) {
+        let vc = ListWeatherViewController.initialize(with: nextPresenter)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}

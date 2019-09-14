@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		096151B1D2954AB0EE9D55F3 /* Pods_TestairWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC04CB9513BA5F5EC47BDA3 /* Pods_TestairWeatherApp.framework */; };
 		CD408B43232A73DD00B48B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B42232A73DD00B48B95 /* AppDelegate.swift */; };
-		CD408B45232A73DD00B48B95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B44232A73DD00B48B95 /* ViewController.swift */; };
+		CD408B45232A73DD00B48B95 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B44232A73DD00B48B95 /* WeatherViewController.swift */; };
 		CD408B48232A73DD00B48B95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD408B46232A73DD00B48B95 /* Main.storyboard */; };
 		CD408B4B232A73DD00B48B95 /* TestairWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD408B49232A73DD00B48B95 /* TestairWeatherApp.xcdatamodeld */; };
 		CD408B4D232A73DF00B48B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD408B4C232A73DF00B48B95 /* Assets.xcassets */; };
@@ -17,9 +17,10 @@
 		CD408B66232A73DF00B48B95 /* TestairWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B65232A73DF00B48B95 /* TestairWeatherAppUITests.swift */; };
 		CD408B76232A753500B48B95 /* TestairWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B5A232A73DF00B48B95 /* TestairWeatherAppTests.swift */; };
 		CD6358CD232CDCE100D3B3C5 /* Gradinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358CC232CDCE100D3B3C5 /* Gradinet.swift */; };
-		CD6358CF232CE10900D3B3C5 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358CE232CE10900D3B3C5 /* WeatherTableViewController.swift */; };
+		CD6358CF232CE10900D3B3C5 /* ListWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358CE232CE10900D3B3C5 /* ListWeatherViewController.swift */; };
 		CD6358D3232CE32F00D3B3C5 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358D1232CE32F00D3B3C5 /* WeatherTableViewCell.swift */; };
 		CD6358D4232CE32F00D3B3C5 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6358D2232CE32F00D3B3C5 /* WeatherTableViewCell.xib */; };
+		CD6358DA232D057C00D3B3C5 /* ListWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6358D9232D057C00D3B3C5 /* ListWeatherPresenter.swift */; };
 		CDC0A2B8232A9A330067F586 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0A2B7232A9A330067F586 /* WeatherModel.swift */; };
 		CDC0A2BB232AAE080067F586 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0A2BA232AAE080067F586 /* WeatherPresenter.swift */; };
 		CDC0A2BD232AAED00067F586 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC0A2BC232AAED00067F586 /* ApiResponse.swift */; };
@@ -48,7 +49,7 @@
 		540BA28D2573F01E5BC13360 /* Pods-TestairWeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestairWeatherApp.release.xcconfig"; path = "Target Support Files/Pods-TestairWeatherApp/Pods-TestairWeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		CD408B3F232A73DD00B48B95 /* TestairWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestairWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD408B42232A73DD00B48B95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD408B44232A73DD00B48B95 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD408B44232A73DD00B48B95 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		CD408B47232A73DD00B48B95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD408B4A232A73DD00B48B95 /* TestairWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestairWeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		CD408B4C232A73DF00B48B95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,9 +62,10 @@
 		CD408B65232A73DF00B48B95 /* TestairWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestairWeatherAppUITests.swift; sourceTree = "<group>"; };
 		CD408B67232A73DF00B48B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6358CC232CDCE100D3B3C5 /* Gradinet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradinet.swift; sourceTree = "<group>"; };
-		CD6358CE232CE10900D3B3C5 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
+		CD6358CE232CE10900D3B3C5 /* ListWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWeatherViewController.swift; sourceTree = "<group>"; };
 		CD6358D1232CE32F00D3B3C5 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		CD6358D2232CE32F00D3B3C5 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		CD6358D9232D057C00D3B3C5 /* ListWeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWeatherPresenter.swift; sourceTree = "<group>"; };
 		CDC0A2B7232A9A330067F586 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		CDC0A2BA232AAE080067F586 /* WeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 		CDC0A2BC232AAED00067F586 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				CDC0A2BA232AAE080067F586 /* WeatherPresenter.swift */,
+				CD6358D9232D057C00D3B3C5 /* ListWeatherPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -201,8 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				CD6358D0232CE30200D3B3C5 /* TableViewCells */,
-				CD408B44232A73DD00B48B95 /* ViewController.swift */,
-				CD6358CE232CE10900D3B3C5 /* WeatherTableViewController.swift */,
+				CD408B44232A73DD00B48B95 /* WeatherViewController.swift */,
+				CD6358CE232CE10900D3B3C5 /* ListWeatherViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,10 +405,11 @@
 			files = (
 				CD6358D3232CE32F00D3B3C5 /* WeatherTableViewCell.swift in Sources */,
 				CDC0A2BB232AAE080067F586 /* WeatherPresenter.swift in Sources */,
-				CD6358CF232CE10900D3B3C5 /* WeatherTableViewController.swift in Sources */,
+				CD6358CF232CE10900D3B3C5 /* ListWeatherViewController.swift in Sources */,
 				CDC0A2BF232AB4400067F586 /* UnixTime.swift in Sources */,
+				CD6358DA232D057C00D3B3C5 /* ListWeatherPresenter.swift in Sources */,
 				CD408B4B232A73DD00B48B95 /* TestairWeatherApp.xcdatamodeld in Sources */,
-				CD408B45232A73DD00B48B95 /* ViewController.swift in Sources */,
+				CD408B45232A73DD00B48B95 /* WeatherViewController.swift in Sources */,
 				CDC0A2BD232AAED00067F586 /* ApiResponse.swift in Sources */,
 				CDC0A2B8232A9A330067F586 /* WeatherModel.swift in Sources */,
 				CD408B43232A73DD00B48B95 /* AppDelegate.swift in Sources */,

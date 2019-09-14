@@ -10,34 +10,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestairWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="TestairWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1Zy-Y0-ro8">
-                                <rect key="frame" x="69" y="342.5" width="276" height="99.5"/>
+                                <rect key="frame" x="69" y="326.5" width="276.00000000000023" height="99.5"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ENTER CITY NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-Jx-brC">
-                                <rect key="frame" x="82" y="450" width="250" height="50"/>
+                                <rect key="frame" x="69" y="434" width="276" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="okv-2o-K9u"/>
-                                    <constraint firstAttribute="width" constant="250" id="ye8-E0-SFf"/>
                                 </constraints>
                                 <color key="textColor" red="0.68763035539999995" green="0.84702074530000004" blue="0.24907439949999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2YH-Jx-brC" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="0DG-R8-ZWt"/>
+                            <constraint firstItem="2YH-Jx-brC" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-16" id="0DG-R8-ZWt"/>
                             <constraint firstItem="2YH-Jx-brC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Qkv-1m-eYy"/>
                             <constraint firstItem="2YH-Jx-brC" firstAttribute="top" secondItem="1Zy-Y0-ro8" secondAttribute="bottom" constant="8" id="R4A-UN-dm8"/>
+                            <constraint firstItem="2YH-Jx-brC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:1.5" id="YM8-6q-qKK"/>
                             <constraint firstItem="1Zy-Y0-ro8" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:9" id="Ydx-Yn-hfl"/>
                             <constraint firstItem="1Zy-Y0-ro8" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:1.5" id="ehE-5t-upv"/>
                             <constraint firstItem="1Zy-Y0-ro8" firstAttribute="centerX" secondItem="2YH-Jx-brC" secondAttribute="centerX" id="zdc-vA-jSm"/>
@@ -47,17 +47,17 @@
                     <navigationItem key="navigationItem" id="7TD-ji-JTe"/>
                     <connections>
                         <outlet property="textField" destination="2YH-Jx-brC" id="9gs-JJ-CKn"/>
-                        <segue destination="jn3-BP-qPw" kind="show" identifier="showTableVC" id="a8L-Lp-11p"/>
+                        <segue destination="jn3-BP-qPw" kind="show" identifier="showTableVC" id="NnA-Mm-Y49"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Weather Table View Controller-->
+        <!--List Weather View Controller-->
         <scene sceneID="MuL-wS-ujS">
             <objects>
-                <viewController id="jn3-BP-qPw" customClass="WeatherTableViewController" customModule="TestairWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="weatherTableVC" id="jn3-BP-qPw" customClass="ListWeatherViewController" customModule="TestairWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f4c-dF-WhY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,11 +66,24 @@
                                 <rect key="frame" x="32" y="152" width="350" height="710"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGl-Yi-g0B">
+                                <rect key="frame" x="16" y="104" width="45" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="J5R-aL-vV2"/>
+                                    <constraint firstAttribute="width" constant="45" id="KL8-kc-KSs"/>
+                                </constraints>
+                                <state key="normal" image="left_arrow"/>
+                                <connections>
+                                    <action selector="backAction:" destination="jn3-BP-qPw" eventType="touchUpInside" id="3hL-dp-Dc1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ssk-ol-D40" firstAttribute="trailing" secondItem="9Og-GP-a4E" secondAttribute="trailing" constant="32" id="4ko-9M-U5e"/>
+                            <constraint firstItem="KGl-Yi-g0B" firstAttribute="top" secondItem="ssk-ol-D40" secondAttribute="top" constant="16" id="5nf-es-iIc"/>
                             <constraint firstItem="9Og-GP-a4E" firstAttribute="top" secondItem="ssk-ol-D40" secondAttribute="top" constant="64" id="K6A-Ba-Uzh"/>
+                            <constraint firstItem="KGl-Yi-g0B" firstAttribute="leading" secondItem="ssk-ol-D40" secondAttribute="leading" constant="16" id="gBY-UE-Tvh"/>
                             <constraint firstItem="9Og-GP-a4E" firstAttribute="leading" secondItem="ssk-ol-D40" secondAttribute="leading" constant="32" id="gXp-Gc-ojP"/>
                             <constraint firstItem="ssk-ol-D40" firstAttribute="bottom" secondItem="9Og-GP-a4E" secondAttribute="bottom" id="x2G-dU-jZf"/>
                         </constraints>
@@ -104,6 +117,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="left_arrow" width="99" height="63"/>
         <image name="logo" width="778" height="113"/>
     </resources>
 </document>
