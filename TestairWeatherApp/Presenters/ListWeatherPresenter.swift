@@ -18,7 +18,7 @@ final class ListWeatherPresenter {
     }
     
     var count: Int {
-        if weatherModel.count >= 5 {
+        if weatherModel.count > 5 {
             return weatherModel.count - 1
         } else {
             return weatherModel.count

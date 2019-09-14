@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		096151B1D2954AB0EE9D55F3 /* Pods_TestairWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC04CB9513BA5F5EC47BDA3 /* Pods_TestairWeatherApp.framework */; };
+		CD0D8879232D696400B39739 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0D8878232D696400B39739 /* CustomButton.swift */; };
 		CD408B43232A73DD00B48B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B42232A73DD00B48B95 /* AppDelegate.swift */; };
 		CD408B45232A73DD00B48B95 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD408B44232A73DD00B48B95 /* WeatherViewController.swift */; };
 		CD408B48232A73DD00B48B95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD408B46232A73DD00B48B95 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		1AC04CB9513BA5F5EC47BDA3 /* Pods_TestairWeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestairWeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540BA28D2573F01E5BC13360 /* Pods-TestairWeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestairWeatherApp.release.xcconfig"; path = "Target Support Files/Pods-TestairWeatherApp/Pods-TestairWeatherApp.release.xcconfig"; sourceTree = "<group>"; };
+		CD0D8878232D696400B39739 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CD408B3F232A73DD00B48B95 /* TestairWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestairWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD408B42232A73DD00B48B95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD408B44232A73DD00B48B95 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				CDC0A2BE232AB4400067F586 /* UnixTime.swift */,
 				CD6358CC232CDCE100D3B3C5 /* Gradinet.swift */,
+				CD0D8878232D696400B39739 /* CustomButton.swift */,
 			);
 			path = "Extensions+Utils";
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0D8879232D696400B39739 /* CustomButton.swift in Sources */,
 				CD6358D3232CE32F00D3B3C5 /* WeatherTableViewCell.swift in Sources */,
 				CDC0A2BB232AAE080067F586 /* WeatherPresenter.swift in Sources */,
 				CD6358DC232D2E1B00D3B3C5 /* ContextHandler.swift in Sources */,

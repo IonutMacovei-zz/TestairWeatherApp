@@ -44,7 +44,10 @@ class WeatherViewController: UIViewController {
         textField.rightView = btnDropDown
         textField.rightViewMode = .always
     }
-
+    @IBAction func viewHistoryAction(_ sender: Any) {
+        presenter.showDetails()
+    }
+    
     @objc func requestWeather() {
         guard let text = textField.text else { return }
         presenter.loadWeatherFor(city: text, completion: { completion in
