@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WeatherView: class {
-    func showDetails(nextPresenter: ListWeatherPresenter)
+    func moveTo(nextPresenter: ListWeatherPresenter)
 }
 
 class WeatherViewController: UIViewController {
@@ -30,23 +30,33 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        setupTextfield()
+        presenter.setView(self)
+    }
+    
+    private func setup() {
         let _ = view.backgroundColor?.applyGradient(for: view)
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    private func setupTextfield() {
         textField.rightView = btnDropDown
         textField.rightViewMode = .always
-        presenter.setView(self)
     }
 
     @objc func requestWeather() {
         guard let text = textField.text else { return }
-        presenter.loadWeatherFor(city: text, completion: { _ in
-            self.presenter.showDetails()
+        presenter.loadWeatherFor(city: text, completion: { completion in
+            if completion {
+                self.presenter.showDetails()
+            } 
         })
     }
 }
 
 extension WeatherViewController: WeatherView {
-    func showDetails(nextPresenter: ListWeatherPresenter) {
+    func moveTo(nextPresenter: ListWeatherPresenter) {
         let vc = ListWeatherViewController.initialize(with: nextPresenter)
         navigationController?.pushViewController(vc, animated: true)
     }

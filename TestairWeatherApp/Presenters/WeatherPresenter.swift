@@ -8,16 +8,8 @@
 
 import Foundation
 
-protocol WeatherPresenterDelegate: class {
-    func showWeather(description: String,
-                     temperature: Int,
-                     date: String,
-                     name: String,
-                     icon: Data)
-}
-
 class WeatherPresenter {
-    var model: WeatherModel!
+    private var model: WeatherModel!
     private weak var view: WeatherView?
 
     func loadWeatherFor(city: String, completion: @escaping (_ success: Bool) -> Void) {
@@ -35,9 +27,13 @@ class WeatherPresenter {
                                           dt: weatherData.dt,
                                           name: weatherData.name,
                                           icon: imageData)
+                DispatchQueue.main.async {
+                    ContextHandler.createData(from: self.model)
+                }
+                
                 completion(true)
             } catch let err {
-                print(err)
+                print(err.localizedDescription)
                 completion(false)
             }
         }.resume()
@@ -49,9 +45,9 @@ class WeatherPresenter {
     
     func showDetails() {
         DispatchQueue.main.async {
-            guard let model = self.model else { return }
+            let model = ContextHandler.retrieveData()
             let nextPresenter = ListWeatherPresenter(weatherModel: model)
-            self.view?.showDetails(nextPresenter: nextPresenter)
+            self.view?.moveTo(nextPresenter: nextPresenter)
         }
     }
     

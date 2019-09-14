@@ -10,7 +10,7 @@ import UIKit
 
 protocol WeatherCell: class {
     func showWeather(description: String,
-                     temperature: Int,
+                     temperature: Int64,
                      date: String,
                      name: String,
                      icon: Data)
@@ -45,11 +45,10 @@ class WeatherTableViewCell: UITableViewCell {
         layer.cornerRadius = 10
         contentView.clipsToBounds = true
     }
-
 }
 
 extension WeatherTableViewCell: WeatherCell {
-    func showWeather(description: String, temperature: Int, date: String, name: String, icon: Data) {
+    func showWeather(description: String, temperature: Int64, date: String, name: String, icon: Data) {
         descriptionLabel.text = description.capitalized
         temperatureLabel.text = String(temperature)
         dateLabel.text = date

@@ -8,33 +8,24 @@
 
 import Foundation
 
-protocol ListWeatherView: class {
-    func show(name: String, icon: String)
-    func showWeather(description: String,
-                     temperature: Int,
-                     date: String,
-                     name: String,
-                     icon: Data)
-}
-
 final class ListWeatherPresenter {
     private weak var view: ListWeatherView?
-    var weatherModel: WeatherModel? {
+    
+    var weatherModel: [CityWeather?] = [] {
         didSet {
-            guard let weatherModel = weatherModel else { return }
-            view?.showWeather(description: weatherModel.weather.description,
-                              temperature: weatherModel.temperature,
-                              date: weatherModel.date,
-                              name: weatherModel.name,
-                              icon: weatherModel.icon)
+            view?.redraw()
         }
     }
     
     var count: Int {
-        return 1
+        if weatherModel.count >= 5 {
+            return weatherModel.count - 1
+        } else {
+            return weatherModel.count
+        }
     }
     
-    init(weatherModel: WeatherModel) {
+    init(weatherModel: [CityWeather]) {
         self.weatherModel = weatherModel
     }
     
@@ -43,10 +34,16 @@ final class ListWeatherPresenter {
     }
     
     func configure(cell: WeatherTableViewCell, row: Int) {
-        cell.showWeather(description: weatherModel?.weather.description ?? "",
-                         temperature: weatherModel?.temperature ?? 0,
-                         date: weatherModel?.date ?? "",
-                         name: weatherModel?.name ?? "",
-                         icon: weatherModel!.icon)
+        let weather = weatherModel[row]
+        cell.showWeather(description: weather?.weather_description ?? "",
+                         temperature: weather?.temperature ?? 0,
+                         date: weather?.date ?? "",
+                         name: weather?.name ?? "",
+                         icon: weather?.icon ?? Data())
     }
+    
+    deinit {
+        weatherModel = []
+    }
+    
 }

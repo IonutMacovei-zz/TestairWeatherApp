@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ListWeatherView: class {
+    func redraw()
+}
+
 class ListWeatherViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
@@ -22,10 +26,15 @@ class ListWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        view.backgroundColor?.applyGradient(for: view)
+        setup()
         setupTableView()
+        presenter.setView(self)
         // Do any additional setup after loading the view.
+    }
+    
+    private func setup() {
+        view.backgroundColor?.applyGradient(for: view)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func setupTableView() {
@@ -50,5 +59,11 @@ extension ListWeatherViewController: UITableViewDataSource {
         }
         presenter.configure(cell: cell, row: indexPath.row)
         return cell
+    }
+}
+
+extension ListWeatherViewController: ListWeatherView {
+    func redraw() {
+        tableView.reloadData()
     }
 }
