@@ -21,7 +21,7 @@ class WeatherViewController: UIViewController {
         let size: CGFloat = 25.0
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "right_arrow"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -(size/2.0), bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -(size/2.0), bottom: 0, right: 6)
         button.frame = CGRect(x: textField.frame.size.width - size, y: 0.0, width: size, height: size)
         button.addTarget(self, action: #selector(requestWeather), for: .touchUpInside)
         
@@ -31,6 +31,8 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+//         I couldn't make the white backgroundColor of texfield
+//         because of the image color which is white
         setupTextfield()
         presenter.setView(self)
     }
@@ -43,6 +45,12 @@ class WeatherViewController: UIViewController {
     private func setupTextfield() {
         textField.rightView = btnDropDown
         textField.rightViewMode = .always
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = UIColor.white.withAlphaComponent(0.6).cgColor
+        textField.clipsToBounds = true
+        textField.attributedPlaceholder = NSAttributedString(string: "Enter city name".uppercased(),
+                                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
     }
     @IBAction func viewHistoryAction(_ sender: Any) {
         presenter.showDetails()
