@@ -13,30 +13,19 @@ class WeatherPresenter {
     private weak var view: WeatherView?
 
     func loadWeatherFor(city: String, completion: @escaping (_ success: Bool) -> Void) {
-        let baseUrl = "http://api.openweathermap.org/data/2.5/weather?q=\(city),LTU&appid=7587eaff3affbf8e56a81da4d6c51d06"
-        guard let url = URL(string: baseUrl) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let weatherData = try decoder.decode(Location.self, from: data)
-                let imageData = self.loadIcon(icon: weatherData.weather.first?.icon ?? "")
-                self.model = WeatherModel(weather: weatherData.weather.first,
-                                          main: weatherData.main,
-                                          dt: weatherData.dt,
-                                          name: weatherData.name,
-                                          icon: imageData)
-                DispatchQueue.main.async {
-                    ContextHandler.createData(from: self.model)
-                }
-                
-                completion(true)
-            } catch let err {
-                print(err.localizedDescription)
-                completion(false)
+        Service.shared.fetchWeatherData(city: city) { (weatherData, error) in
+            let imageData = Service.shared.loadIcon(icon: weatherData?.weather.first?.icon ?? "")
+            self.model = WeatherModel(description: weatherData?.weather.first?.description,
+                                      temperature: weatherData?.main.temp,
+                                      dt: weatherData?.dt,
+                                      name: weatherData?.name,
+                                      icon: imageData)
+            DispatchQueue.main.async {
+                ContextHandler.createData(from: self.model)
             }
-        }.resume()
+            completion(true)
+        }
+
     }
     
     func setView(_ view: WeatherView) {
@@ -51,13 +40,4 @@ class WeatherPresenter {
         }
     }
     
-    private func loadIcon(icon: String) -> Data {
-        let imageString = "http://openweathermap.org/img/wn/\(icon)@2x.png"
-        guard let url = URL(string: imageString) else { return Data() }
-        if let data = try? Data(contentsOf: url) {
-            return data
-        } else {
-            return Data()
-        }
-    }
 }

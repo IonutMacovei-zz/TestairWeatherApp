@@ -37,14 +37,15 @@ class ContextHandler {
         let weatherEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)!
         
         let weather = NSManagedObject(entity: weatherEntity, insertInto: context)
-        weather.setValue(model.weather.description, forKey: CoreDataKey.description)
+        weather.setValue(model.description, forKey: CoreDataKey.description)
         weather.setValue(model.date, forKey: CoreDataKey.date)
         weather.setValue(model.icon, forKey: CoreDataKey.icon)
         weather.setValue(model.name, forKey: CoreDataKey.name)
-        weather.setValue(model.temperature, forKey: CoreDataKey.temperature)
+        weather.setValue(model.tempCelsius, forKey: CoreDataKey.temperature)
         
         do {
             try context.save()
+            print("SAVED!!!!!")
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }

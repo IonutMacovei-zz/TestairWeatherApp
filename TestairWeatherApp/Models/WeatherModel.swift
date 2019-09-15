@@ -9,14 +9,14 @@ import Foundation
 import Darwin
 
 struct WeatherModel {
-    let weather: Weather!
-    let main: Main!
+    let description: String!
+    let temperature: Double!
     let dt: Int!
     let name: String!
     let icon: Data!
     
-    var temperature: Int {
-        return Int(main.temp - 273.15)
+    var tempCelsius: Int {
+        return Int(temperature - 273.15)
     }
     
     var date: String {

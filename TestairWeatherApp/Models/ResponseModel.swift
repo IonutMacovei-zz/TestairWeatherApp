@@ -1,5 +1,5 @@
 //
-//  ApiResponse.swift
+//  ResponseModel.swift
 //  TestairWeatherApp
 //
 //  Created by Macovei, Ionut on 12/09/2019.
@@ -70,5 +70,5 @@ struct Weather: Codable {
 // MARK: - Wind
 struct Wind: Codable {
     let speed: Double
-    let deg: Int
+    let deg: Int?
 }
