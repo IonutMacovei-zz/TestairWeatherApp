@@ -45,7 +45,7 @@ class ContextHandler {
         
         do {
             try context.save()
-            print("SAVED!!!!!")
+            print("Successfully saved")
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -60,7 +60,6 @@ class ContextHandler {
             let result = try context.fetch(fetchRequest)
             for data in result {
                 contextArray.append(data)
-                print(data.value(forKey: CoreDataKey.name) as! String)
             }
             // Data is deleted only when are more than 5 objects
             deleteData()

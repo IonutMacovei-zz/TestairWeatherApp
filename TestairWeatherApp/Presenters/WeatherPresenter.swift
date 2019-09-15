@@ -9,7 +9,7 @@
 import Foundation
 
 class WeatherPresenter {
-    private var model: WeatherModel!
+    var model: WeatherModel!
     private weak var view: WeatherView?
 
     func loadWeatherFor(city: String, completion: @escaping (_ success: Bool) -> Void) {
@@ -35,8 +35,10 @@ class WeatherPresenter {
     func showDetails() {
         DispatchQueue.main.async {
             let model = ContextHandler.retrieveData()
-            let nextPresenter = ListWeatherPresenter(weatherModel: model)
-            self.view?.moveTo(nextPresenter: nextPresenter)
+            if model.count != 0 {
+                let nextPresenter = ListWeatherPresenter(weatherModel: model)
+                self.view?.moveTo(nextPresenter: nextPresenter)
+            }
         }
     }
     

@@ -19,16 +19,25 @@ class TestairWeatherAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testPresenterModel() {
+        let weatherModel = WeatherModel(description: "clear sky", temperature: 297.59, dt: 1568549217, name: "Bucharest", icon: Data())
+        var weatherPresenterModel = WeatherPresenter().model
+        weatherPresenterModel = weatherModel
+        
+        XCTAssertEqual(weatherModel.description, weatherPresenterModel?.description)
+        XCTAssertEqual(weatherModel.temperature, weatherPresenterModel?.temperature)
+        XCTAssertEqual(weatherModel.dt, weatherPresenterModel?.dt)
+        XCTAssertEqual(weatherModel.name, weatherPresenterModel?.name)
+        XCTAssertEqual(weatherModel.icon, weatherPresenterModel?.icon)
     }
+    
+    func testListPresenterModel() {
+        let weatherArray = ContextHandler.retrieveData()
+        let listWeatherModel = ListWeatherPresenter(weatherModel: weatherArray).weatherModel
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        XCTAssertNotNil(weatherArray)
+        XCTAssertNotNil(listWeatherModel)
+        XCTAssertEqual(weatherArray, listWeatherModel)
     }
 
 }
