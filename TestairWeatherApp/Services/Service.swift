@@ -18,11 +18,11 @@ class Service: NSObject {
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             if let err = err {
                 completion(nil, err)
-                print("Failed to fetch courses:", err)
+                print("Failed to fetch:", err)
                 return
             }
-            
             guard let data = data else { return }
+            
             do {
                 let decoder = JSONDecoder()
                 let weather = try decoder.decode(Location.self, from: data)
@@ -30,6 +30,7 @@ class Service: NSObject {
                     completion(weather, nil)
                 }
             } catch let jsonErr {
+                completion(nil, jsonErr)
                 print("Failed to decode:", jsonErr)
             }
         }.resume()

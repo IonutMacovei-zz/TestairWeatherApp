@@ -14,9 +14,15 @@ class WeatherPresenter {
 
     func loadWeatherFor(city: String, completion: @escaping (_ success: Bool) -> Void) {
         Service.shared.fetchWeatherData(city: city) { (weatherData, error) in
-            let imageData = Service.shared.loadIcon(icon: weatherData?.weather.first?.icon ?? "")
-            self.model = WeatherModel(description: weatherData?.weather.first?.description,
-                                      temperature: weatherData?.main.temp,
+            if let error = error {
+                print("Failed to fetch:", error)
+                completion(false)
+                return
+            }
+
+            let imageData = Service.shared.loadIcon(icon: weatherData?.weather?.first?.icon ?? "")
+            self.model = WeatherModel(description: weatherData?.weather?.first?.description,
+                                      temperature: weatherData?.main?.temp,
                                       dt: weatherData?.dt,
                                       name: weatherData?.name,
                                       icon: imageData)
@@ -39,6 +45,7 @@ class WeatherPresenter {
                 let nextPresenter = ListWeatherPresenter(weatherModel: model)
                 self.view?.moveTo(nextPresenter: nextPresenter)
             }
+            //TODO: Inform user that there is no History
         }
     }
     

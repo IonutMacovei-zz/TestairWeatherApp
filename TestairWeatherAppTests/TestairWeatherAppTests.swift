@@ -10,18 +10,24 @@ import XCTest
 @testable import TestairWeatherApp
 
 class TestairWeatherAppTests: XCTestCase {
+    
+    var weatherPresenter: WeatherPresenter!
+    var weatherModel: WeatherModel!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        weatherPresenter = WeatherPresenter()
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        weatherPresenter = nil
+        weatherModel = nil
     }
 
     func testPresenterModel() {
-        let weatherModel = WeatherModel(description: "clear sky", temperature: 297.59, dt: 1568549217, name: "Bucharest", icon: Data())
-        var weatherPresenterModel = WeatherPresenter().model
+        weatherModel = WeatherModel(description: "clear sky", temperature: 297.59, dt: 1568549217, name: "Bucharest", icon: Data())
+        var weatherPresenterModel = weatherPresenter.model
         weatherPresenterModel = weatherModel
         
         XCTAssertEqual(weatherModel.description, weatherPresenterModel?.description)
@@ -38,6 +44,26 @@ class TestairWeatherAppTests: XCTestCase {
         XCTAssertNotNil(weatherArray)
         XCTAssertNotNil(listWeatherModel)
         XCTAssertEqual(weatherArray, listWeatherModel)
+    }
+    
+    func testDataReceivedTrue() {
+        let dataExpectation = expectation(description: "Service does stuff and runs the callback closure")
+        let city = "Paris"
+        weatherPresenter.loadWeatherFor(city: city, completion: { completion in
+            XCTAssertTrue(completion)
+            dataExpectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testDataReceivedFalse() {
+        let dataExpectation = expectation(description: "Service does stuff and runs the callback closure")
+        let city = "SomeRandomCity"
+        weatherPresenter.loadWeatherFor(city: city, completion: { completion in
+            XCTAssertFalse(completion)
+            dataExpectation.fulfill()
+        })
+        waitForExpectations(timeout: 10, handler: nil)
     }
 
 }

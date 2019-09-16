@@ -31,8 +31,6 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-//         I couldn't make the white backgroundColor of texfield
-//         because of the image color which is white
         setupTextfield()
         presenter.setView(self)
     }
@@ -43,6 +41,8 @@ class WeatherViewController: UIViewController {
     }
     
     private func setupTextfield() {
+        //         UITextField backgroundColor can't be white because of the image color.
+        textField.delegate = self
         textField.rightView = btnDropDown
         textField.rightViewMode = .always
         textField.layer.cornerRadius = 10
@@ -61,7 +61,8 @@ class WeatherViewController: UIViewController {
         presenter.loadWeatherFor(city: text, completion: { completion in
             if completion {
                 self.presenter.showDetails()
-            } 
+            }
+            //TODO: Inform user that city provided doesn't exist
         })
     }
 }
@@ -70,5 +71,12 @@ extension WeatherViewController: WeatherView {
     func moveTo(nextPresenter: ListWeatherPresenter) {
         let vc = ListWeatherViewController.initialize(with: nextPresenter)
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension WeatherViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }
